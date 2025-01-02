@@ -3,34 +3,32 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+Hey there! 👋
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+I craft elegant iOS experiences by day and explore the frontiers of AI by night. As a two-time Apple Swift Student Challenge winner (WWDC'20 & '21) and Senior Software Engineer, I blend the art of intuitive mobile interfaces with the science of intelligent systems.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+Currently pursuing Applied Data Science at San Jose State University, I'm on a mission to bridge the gap between mobile innovation and artificial intelligence. My work spans from building production-ready iOS apps with Swift and SwiftUI to developing AI agents.
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+When I'm not coding, you'll find me leading the Swift Hyderabad Community, organising at tech conferences, or mentoring the next generation of developers. I believe in the power of community-driven development and open source collaboration.
+
+## Recent Launches 🚀
+
+**DEW** - A mindfulness app crafted with SwiftUI and CoreData, featuring religious decks and home screen widgets that bring daily inspiration to thousands of users.
+
+**Feebac** - A Flutter-powered news platform where technology meets rewards, engaging users through surveys while maintaining clean architecture across 23,000+ lines of code.
 
 ## Tech Stack
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+I specialize in building iOS applications with Swift and SwiftUI, but my toolkit extends far beyond. From Flutter for cross-platform development to Python for AI research, I choose the right tool for each unique challenge.
 
-## Features
+## Let's Connect
 
-Here are certain features of this site.
+I'm always excited to collaborate on projects that push the boundaries of mobile and AI technology. Whether you're looking to build something amazing or just want to chat about the latest in tech, drop me a line:
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
+- [GitHub](https://github.com/irangareddy)
+- [LinkedIn](https://linkedin.com/in/irangareddy)
+- [Twitter](https://twitter.com/irangareddy)
 
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+Currently based in San Jose, CA, and open to new adventures in technology.
+
+*"In learning you will teach, and in teaching you will learn." - Phil Collins*
