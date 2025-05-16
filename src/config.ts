@@ -5,28 +5,32 @@ export const SITE: Site = {
   author: "Ranga Reddy Nukala",
   profile: "https://irangareddy.in/",
   desc: "Exploring iOS development, Swift best practices, and the intersection of mobile and AI. Written by a two-time WWDC winner and Senior iOS Engineer.",
-  title: "Swift & Beyond | Ranga Reddy",
+  title: "Beyond Intelligence | Ranga Reddy",
   ogImage: "ranga-dev-og.jpg", // You'll need to create this image
   lightAndDarkMode: true,
   postPerIndex: 6, // Showing more posts on the homepage
   postPerPage: 5, // More posts per page for better readability
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
-  editPost: {
-    url: "https://github.com/irangareddy/blog/edit/main/src/content/blog",
-    text: "Suggest Improvements",
-    appendFilePath: true,
-  },
+  // editPost: {
+  //   url: "https://github.com/irangareddy/blog/edit/main/src/content/blog",
+  //   text: "Suggest Improvements",
+  //   appendFilePath: true,
+  // },
   // Additional metadata for better SEO
   // keywords: [
-  //   "iOS Development",
+  //   "Apple Platforms",
+  //   "Vision Pro", 
+  //   "Physical AI",
+  //   "Machine Learning",
+  //   "Applied Data Intelligence",
   //   "Swift",
   //   "SwiftUI",
   //   "Mobile Development",
-  //   "Software Engineering",
-  //   "WWDC",
-  //   "Apple",
-  //   "Tech Blog"
+  //   "Spatial Computing",
+  //   "Neuro-Symbolic AI",
+  //   "iOS Development",
+  //   "Research",
   // ],
   // defaultTheme: 'system', // Respect system preferences
   // language: "en-US",
