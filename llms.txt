@@ -1,0 +1,14 @@
+---
+permalink: /llms.txt
+---
+# Ranga Reddy's Blog
+
+> Experiments, reading notes, and build logs on LLMs, physical AI, robotics, reinforcement learning, and occasionally Swift.
+
+Author: Ranga Reddy Nukala
+URL: https://blogs.irangareddy.in
+
+## Posts
+
+{% assign posts = site.posts | sort: "date" | reverse %}{% for post in posts %}- [{{ post.title }}]({{ site.url }}{{ post.url }}): {{ post.description | default: post.excerpt | strip_html | truncate: 160 }}
+{% endfor %}

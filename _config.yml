@@ -1,0 +1,57 @@
+title: "Ranga Reddy's Blog"
+url: "https://blogs.irangareddy.in"
+author: "Ranga Reddy Nukala"
+description: "Experiments, reading notes, and build logs on LLMs, physical AI, robotics, reinforcement learning, and occasionally Swift. By Ranga Reddy Nukala."
+defaults_image: /public/pfp.jpg
+
+# Email / Social media user names used by the minima theme:
+# All of these are optional and can be removed or commented out
+email: "irangareddy [dot] nukala [at] gmail [dot] com"
+twitter_username: "irangareddy"
+github_username: "irangareddy"
+linkedin_username: "irangareddy"
+instagram_username: "irangareddy"
+
+# Google Analytics (uncomment and add your tracking ID)
+# google_analytics: G-XXXXXXXXXX
+
+#########################################################################################
+######### Nothing below needs to be changed (unless you know what you're doing) #########
+#########################################################################################
+theme: "minima"
+
+# Top bar navigation order
+header_pages:
+  - series.md
+  - archive.md
+
+# Allow future-dated posts to be processed (for "Ongoing" section)
+future: true
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  math_engine: mathjax
+
+    
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Sitemap configuration
+sitemap:
+  exclude: ['/archive.html']
+  lastmod: true
+
+titles_from_headings:
+  strip_title: true
+  collections: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      tags: Other

@@ -1,0 +1,86 @@
+---
+layout: default
+---
+<link href="/css/override.css" rel="stylesheet" type="text/css">
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="post-header-row">
+      <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+      <div class="copy-dropdown">
+        <button class="copy-page-btn" onclick="copyPage()" title="Copy page content">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span class="copy-page-label">Copy page</span>
+        </button><button class="copy-chevron-btn" onclick="toggleCopyMenu(event)" title="More copy options">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="copy-menu" id="copyMenu">
+          <button onclick="copyPage()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy page
+          </button>
+          <button onclick="copyForChat()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Copy for chat
+          </button>
+        </div>
+      </div>
+    </div>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {% assign author = page.author | default: site.author %}
+      {%- if author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+      {%- endif -%}</p>
+  </header>
+
+  <div class="share-links">
+    {% include sharelinks.html %}
+  </div>
+
+  {% include series-nav.html %}
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+    {% include navlinks.html %}
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+<script>
+function copyPage() {
+  var content = document.querySelector('.post-content.e-content');
+  var label = document.querySelector('.copy-page-label');
+  navigator.clipboard.writeText(content.innerText).then(function() {
+    label.textContent = 'Copied!';
+    setTimeout(function() { label.textContent = 'Copy page'; }, 2000);
+  });
+  closeCopyMenu();
+}
+
+function copyForChat() {
+  var url = window.location.href;
+  var text = 'Read from ' + url + ' so I can ask questions about it.';
+  var label = document.querySelector('.copy-page-label');
+  navigator.clipboard.writeText(text).then(function() {
+    label.textContent = 'Copied!';
+    setTimeout(function() { label.textContent = 'Copy page'; }, 2000);
+  });
+  closeCopyMenu();
+}
+
+function toggleCopyMenu(e) {
+  e.stopPropagation();
+  document.getElementById('copyMenu').classList.toggle('show');
+}
+
+function closeCopyMenu() {
+  document.getElementById('copyMenu').classList.remove('show');
+}
+
+document.addEventListener('click', function() { closeCopyMenu(); });
+</script>

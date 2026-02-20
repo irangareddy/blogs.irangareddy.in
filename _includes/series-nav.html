@@ -1,0 +1,38 @@
+{% if page.series %}
+{% assign series_posts = site.posts | where: "series", page.series | sort: "series_order" %}
+{% if series_posts.size > 1 %}
+<div class="series-nav">
+  <div class="series-header" onclick="this.parentElement.classList.toggle('collapsed')">
+    <span class="series-label">{{ page.series }}</span>
+    <span class="series-progress">Part {{ page.series_order }} of {{ series_posts.size }}</span>
+    <svg class="series-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </div>
+  <ol class="series-list">
+    {% for post in series_posts %}
+    <li class="{% if post.url == page.url %}series-current{% endif %}">
+      {% if post.url == page.url %}
+        <span>{{ post.title }}</span>
+      {% else %}
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+  {% assign current_index = page.series_order | minus: 1 %}
+  <div class="series-prev-next">
+    {% if current_index > 0 %}
+      {% assign prev_order = page.series_order | minus: 1 %}
+      {% assign prev_post = series_posts | where: "series_order", prev_order | first %}
+      {% if prev_post %}
+      <a href="{{ prev_post.url }}" class="series-prev">&larr; Part {{ prev_order }}</a>
+      {% endif %}
+    {% endif %}
+    {% assign next_order = page.series_order | plus: 1 %}
+    {% assign next_post = series_posts | where: "series_order", next_order | first %}
+    {% if next_post %}
+      <a href="{{ next_post.url }}" class="series-next">Part {{ next_order }} &rarr;</a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endif %}
