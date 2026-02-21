@@ -740,6 +740,76 @@ pre code.hljs {
   font-style: italic;
 }
 
+/* Post banner component */
+.post-banner {
+  margin: 24px 0;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.post-banner:hover {
+  border-color: #bbc0c5;
+}
+
+.post-banner-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.post-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.post-banner-label {
+  font-family: "Space Mono", monospace !important;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6a737d;
+}
+
+.post-banner-title {
+  font-family: "Inter", sans-serif !important;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: #24292e;
+  line-height: 1.4;
+}
+
+.post-banner-cta {
+  font-family: "Inter", sans-serif !important;
+  font-size: 0.9em;
+  color: #0366d6;
+  margin-top: 4px;
+}
+
+.post-banner-icon {
+  flex-shrink: 0;
+  margin-left: 24px;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 600px) {
+  .post-banner-link {
+    padding: 16px;
+  }
+
+  .post-banner-icon {
+    display: none;
+  }
+}
+
 /* Tables: horizontal scroll on overflow */
 .post-content table {
   display: block;
