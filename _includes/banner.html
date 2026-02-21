@@ -1,0 +1,28 @@
+{% comment %}
+  Banner component for blog posts.
+  Parameters:
+    type  – "github", "appstore", or "link"
+    label – small-caps subtitle (e.g. "SOURCE CODE")
+    title – bold heading text
+    url   – destination URL
+    cta   – call-to-action link text (e.g. "View repository")
+{% endcomment %}
+
+<aside class="post-banner post-banner--{{ include.type }}">
+  <a href="{{ include.url }}" class="post-banner-link" target="_blank" rel="noopener noreferrer">
+    <div class="post-banner-content">
+      <span class="post-banner-label">{{ include.label }}</span>
+      <span class="post-banner-title">{{ include.title }}</span>
+      <span class="post-banner-cta">{{ include.cta }} &rarr;</span>
+    </div>
+    <div class="post-banner-icon">
+      {% if include.type == "github" %}
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="#24292e" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      {% elsif include.type == "appstore" %}
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="#0366d6" aria-hidden="true"><path d="M8.809 14.922l-1.56 2.7H3.037a.5.5 0 0 0-.432.752l.996 1.722a.498.498 0 0 0 .682.184l2.325-1.342 1.558-2.696-1.07-1.852 1.713-2.966 1.069 1.852 4.284.002-.001-.002h3.782a.5.5 0 0 0 .433-.248l1-1.732a.5.5 0 0 0-.433-.752H14.58l-3.12-5.406a.998.998 0 0 0-1.73-.002l-.996 1.722a.5.5 0 0 0 0 .502L12.472 14H8.809zM3.786 18.44a.5.5 0 0 0 .432.752h4.212l1.557-2.696H5.913L3.786 18.44zM17.212 5.5a.998.998 0 0 0-.866.5l-3.118 5.4 1.558 2.698 4.674-.002a.5.5 0 0 0 .432-.248l.998-1.73a.5.5 0 0 0-.432-.752H17.12l1.558-2.696 1.328-2.3a.5.5 0 0 0-.432-.748l-1.994-.002a.5.5 0 0 0-.368.158v.002z"/></svg>
+      {% else %}
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6a737d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      {% endif %}
+    </div>
+  </a>
+</aside>
