@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <style>
+    .bg { fill: #ffffff; }
+    .title { font-size: 24px; font-weight: 600; fill: #111827; letter-spacing: -0.2px; }
+    .subtitle { font-size: 14px; fill: #6b7280; }
+    .stage { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .stage-label { font-size: 14px; fill: #374151; font-weight: 500; }
+    .vendor-label { font-size: 16px; fill: #111827; font-weight: 600; text-anchor: end; }
+    .band-label { font-size: 13px; fill: #ffffff; font-weight: 500; }
+    .row-rule { stroke: #f3f4f6; stroke-width: 1; }
+    .footnote { font-size: 13px; fill: #6b7280; }
+  </style>
+
+  <rect class="bg" width="1200" height="760"/>
+
+  <!-- Header -->
+  <text class="title" x="60" y="62">Where each stack puts the smart turn-taking</text>
+  <text class="subtitle" x="60" y="92">Bands span the pipeline stages each vendor's turn-taking logic covers, per their public docs (April 2026).</text>
+
+  <!-- Pipeline stages header -->
+  <g transform="translate(240,140)">
+    <!-- 6 stages, each 140 wide, gap 8 -->
+    <g>
+      <rect class="stage" x="0"   y="0" width="140" height="46" rx="8"/>
+      <text class="stage-label" x="70" y="29" text-anchor="middle">Audio in</text>
+    </g>
+    <g>
+      <rect class="stage" x="148" y="0" width="140" height="46" rx="8"/>
+      <text class="stage-label" x="218" y="29" text-anchor="middle">VAD</text>
+    </g>
+    <g>
+      <rect class="stage" x="296" y="0" width="140" height="46" rx="8"/>
+      <text class="stage-label" x="366" y="29" text-anchor="middle">ASR</text>
+    </g>
+    <g>
+      <rect class="stage" x="444" y="0" width="140" height="46" rx="8"/>
+      <text class="stage-label" x="514" y="29" text-anchor="middle">Turn / barge-in</text>
+    </g>
+    <g>
+      <rect class="stage" x="592" y="0" width="140" height="46" rx="8"/>
+      <text class="stage-label" x="662" y="29" text-anchor="middle">LLM</text>
+    </g>
+    <g>
+      <rect class="stage" x="740" y="0" width="140" height="46" rx="8"/>
+      <text class="stage-label" x="810" y="29" text-anchor="middle">TTS / audio out</text>
+    </g>
+
+    <!-- arrows between stages -->
+    <g stroke="#9ca3af" stroke-width="1.5" fill="none">
+      <path d="M140,23 L148,23"/>
+      <path d="M288,23 L296,23"/>
+      <path d="M436,23 L444,23"/>
+      <path d="M584,23 L592,23"/>
+      <path d="M732,23 L740,23"/>
+    </g>
+  </g>
+
+  <!--
+    Coordinate notes:
+    Pipeline group is at translate(240, 140), stages 46 tall, ending at y=186.
+    Pipeline stage left edges (in page coords): Audio-in 240, VAD 388, ASR 536, Turn 684, LLM 832, TTS 980.
+    Pipeline stage right edges: 380, 528, 676, 824, 972, 1120.
+
+    Rows start at y=240 (gap of 54 below pipeline). Each row is 64 tall.
+    Band sits centered: y=row+12, height=40.
+    Band label baseline: y=row+38 (visual center at row+33).
+    Vendor label baseline: same y as band label.
+    Row rule below: y=row+64.
+  -->
+
+  <!-- OpenAI: VAD + Turn (server_vad/semantic_vad) -->
+  <g>
+    <text class="vendor-label" x="220" y="278">OpenAI</text>
+    <rect x="388" y="252" width="436" height="40" rx="8" fill="#0ea5e9"/>
+    <text class="band-label" x="606" y="278" text-anchor="middle">server_vad and semantic_vad</text>
+    <line class="row-rule" x1="60" y1="304" x2="1140" y2="304"/>
+  </g>
+
+  <!-- Deepgram: ASR + Turn (Flux fuses STT + end-of-turn) -->
+  <g>
+    <text class="vendor-label" x="220" y="342">Deepgram</text>
+    <rect x="536" y="316" width="288" height="40" rx="8" fill="#0e9f6e"/>
+    <text class="band-label" x="680" y="342" text-anchor="middle">Flux: EndOfTurn + EagerEndOfTurn</text>
+    <line class="row-rule" x1="60" y1="368" x2="1140" y2="368"/>
+  </g>
+
+  <!-- LiveKit: VAD + Turn detector + adaptive interruption -->
+  <g>
+    <text class="vendor-label" x="220" y="406">LiveKit</text>
+    <rect x="388" y="380" width="140" height="40" rx="8" fill="#7c3aed"/>
+    <text class="band-label" x="458" y="406" text-anchor="middle">VAD</text>
+    <rect x="536" y="380" width="288" height="40" rx="8" fill="#a855f7"/>
+    <text class="band-label" x="680" y="406" text-anchor="middle">turn detector + adaptive interruption</text>
+    <line class="row-rule" x1="60" y1="432" x2="1140" y2="432"/>
+  </g>
+
+  <!-- Pipecat: VAD + ASR + Turn (user turn strategies) -->
+  <g>
+    <text class="vendor-label" x="220" y="470">Pipecat</text>
+    <rect x="388" y="444" width="436" height="40" rx="8" fill="#f97316"/>
+    <text class="band-label" x="606" y="470" text-anchor="middle">user turn strategies (start + end)</text>
+    <line class="row-rule" x1="60" y1="496" x2="1140" y2="496"/>
+  </g>
+
+  <!-- Vapi: orchestration spans VAD through TTS -->
+  <g>
+    <text class="vendor-label" x="220" y="534">Vapi</text>
+    <rect x="388" y="508" width="732" height="40" rx="8" fill="#ef4444"/>
+    <text class="band-label" x="754" y="534" text-anchor="middle">orchestration layer: endpointing + interruption models + filters</text>
+    <line class="row-rule" x1="60" y1="560" x2="1140" y2="560"/>
+  </g>
+
+  <!-- ElevenLabs: integrated stack covers ASR through TTS -->
+  <g>
+    <text class="vendor-label" x="220" y="598">ElevenLabs</text>
+    <rect x="536" y="572" width="584" height="40" rx="8" fill="#0f172a"/>
+    <text class="band-label" x="828" y="598" text-anchor="middle">coordinated stack: ASR + LLM + TTS + turn-taking</text>
+    <line class="row-rule" x1="60" y1="624" x2="1140" y2="624"/>
+  </g>
+
+  <!-- Retell: abstracted -->
+  <g>
+    <text class="vendor-label" x="220" y="662">Retell</text>
+    <rect x="388" y="636" width="732" height="40" rx="8" fill="#9ca3af" opacity="0.55"/>
+    <text class="band-label" x="754" y="662" text-anchor="middle">abstracted; public docs focus on operations</text>
+  </g>
+
+  <!-- Footnote -->
+  <text class="footnote" x="60" y="722">Band width shows scope, not quality. Wider ≠ better.</text>
+</svg>
